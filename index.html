@@ -1,0 +1,81 @@
+<!-- Sharvi Verma, Final Project -->
+<!DOCTYPE html>
+<html lang="en">
+<!-- creating the text and input box, add "royal" colors and fonts -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Royal Name Generator</title>
+    <style>
+        body {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+        .container {
+            background: lightskyblue;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input, select, button {
+            margin: 5px 0;
+            padding: 10px;
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+<!-- Collecting the input with text boxes and drop down menus -->
+
+</head>
+<body>
+    <div class="container">
+        <h1>Royal Name Generator</h1>
+        <select id="age">
+            <option value="0-18">0-18</option>
+            <option value="18-30">18-30</option>
+            <option value="30+">30+</option>
+        </select>
+        <select id="gender">
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+        </select>
+        <input type="text" id="firstName" placeholder="Enter your first name">
+        <input type="text" id="street" placeholder="Enter the name of your street">
+        <button onclick="generateRoyalName()">Generate Royal Name</button>
+        <h2 id="result"></h2>
+    </div>
+<!-- function to determine and display the name -->
+
+    <script>
+        function generateRoyalName() {
+            const age = document.getElementById('age').value;
+            const gender = document.getElementById('gender').value;
+            const firstName = document.getElementById('firstName').value;
+            const street = document.getElementById('street').value;
+
+            let title = '';
+
+            if (age === '0-18') {
+                title = (gender === 'male') ? 'Prince' : 'Princess';
+            } else if (age === '18-30') {
+                title = (gender === 'male') ? 'Duke' : 'Duchess';
+            } else {
+                title = (gender === 'male') ? 'King' : 'Queen';
+            }
+
+            const royalName = `${title} ${firstName} of ${street}`;
+            document.getElementById('result').textContent = royalName;
+        }
+    </script>
+</body>
+</html>
